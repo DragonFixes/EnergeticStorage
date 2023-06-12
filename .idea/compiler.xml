@@ -62,7 +62,6 @@
       <module name="anvilgui-1_9_R2" target="1.8" />
       <module name="anvilgui-abstraction" target="1.8" />
       <module name="anvilgui-parent" target="1.5" />
-      <module name="energeticstorage" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">

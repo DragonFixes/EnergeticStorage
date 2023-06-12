@@ -42,6 +42,11 @@
       <option name="url" value="https://maven.seanomik.net/private" />
     </remote-repository>
     <remote-repository>
+      <option name="id" value="papermc" />
+      <option name="name" value="papermc" />
+      <option name="url" value="https://repo.papermc.io/repository/maven-public/" />
+    </remote-repository>
+    <remote-repository>
       <option name="id" value="codemc-snapshots" />
       <option name="name" value="codemc-snapshots" />
       <option name="url" value="https://repo.codemc.io/repository/maven-snapshots/" />
@@ -62,14 +67,14 @@
       <option name="url" value="https://repository.jboss.org/nexus/content/repositories/public/" />
     </remote-repository>
     <remote-repository>
-      <option name="id" value="apache.snapshots" />
-      <option name="name" value="apache.snapshots" />
-      <option name="url" value="https://repository.apache.org/snapshots/" />
-    </remote-repository>
-    <remote-repository>
       <option name="id" value="minecraft-repo" />
       <option name="name" value="minecraft-repo" />
       <option name="url" value="https://libraries.minecraft.net/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="apache.snapshots" />
+      <option name="name" value="apache.snapshots" />
+      <option name="url" value="https://repository.apache.org/snapshots/" />
     </remote-repository>
   </component>
 </project>

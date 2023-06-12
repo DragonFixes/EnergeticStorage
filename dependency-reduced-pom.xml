@@ -4,7 +4,7 @@
   <groupId>net.seanomik</groupId>
   <artifactId>energeticstorage</artifactId>
   <name>EnergeticStorage</name>
-  <version>0.7.7-SNAPSHOT</version>
+  <version>0.7.8-SNAPSHOT</version>
   <build>
     <defaultGoal>clean package</defaultGoal>
     <resources>
@@ -16,7 +16,7 @@
     <plugins>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.7.0</version>
+        <version>3.11.0</version>
         <configuration>
           <source>${java.version}</source>
           <target>${java.version}</target>
@@ -24,7 +24,7 @@
       </plugin>
       <plugin>
         <artifactId>maven-shade-plugin</artifactId>
-        <version>3.3.0</version>
+        <version>3.4.1</version>
         <executions>
           <execution>
             <id>shade</id>
@@ -47,7 +47,7 @@
                   <shadedPattern>net.seanomik.energeticstorage.bstats</shadedPattern>
                 </relocation>
               </relocations>
-              <outputFile>/mnt/d/Development/Spigot/DevServers/${server.version}/plugins/EnergeticStorage-v${project.version}.jar</outputFile>
+              <outputFile>C:\ServeurMC\serveur_perso_1_20\plugins\EnergeticStorage-v${project.version}.jar</outputFile>
             </configuration>
           </execution>
         </executions>
@@ -71,6 +71,10 @@
       <id>minecraft-repo</id>
       <url>https://libraries.minecraft.net/</url>
     </repository>
+    <repository>
+      <id>papermc</id>
+      <url>https://repo.papermc.io/repository/maven-public/</url>
+    </repository>
   </repositories>
   <pluginRepositories>
     <pluginRepository>
@@ -80,15 +84,15 @@
   </pluginRepositories>
   <dependencies>
     <dependency>
-      <groupId>org.spigotmc</groupId>
-      <artifactId>spigot-api</artifactId>
-      <version>1.14-R0.1-SNAPSHOT</version>
+      <groupId>io.papermc.paper</groupId>
+      <artifactId>paper-api</artifactId>
+      <version>1.20-R0.1-SNAPSHOT</version>
       <scope>provided</scope>
     </dependency>
   </dependencies>
   <properties>
-    <java.version>1.8</java.version>
+    <java.version>19</java.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <server.version>1.17</server.version>
+    <server.version>1.20</server.version>
   </properties>
 </project>

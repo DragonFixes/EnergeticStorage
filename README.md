@@ -11,7 +11,7 @@ Features:
 * Player Whitelist
 * Terminal searching
 * Balanced
-* Supports 1.14.X-1.18.X
+* Supports 1.20
 
 ## Items And Blocks:
 * 1k, 4k, 16k, and 64k, drives
@@ -59,3 +59,11 @@ Players.yml is where **_all_** player data is stored. **I would recommend not me
 ![terminal](screenshots/terminal.png)
 
 ![terminalAmount](screenshots/terminalAmount.png);
+
+# TODO 
+- [ ] input item from hopper : check if the system can receive before removing it
+- [ ] add [translatable names with fallback](https://jd.advntr.dev/api/4.14.0/net/kyori/adventure/text/Component.html#translatable(java.lang.String,java.lang.String))
+- [ ] add CustomModelData to each drive
+- [ ] make a resource pack with translations and [AE2 textures](https://github.com/AppliedEnergistics/Applied-Energistics-2/tree/master/src/main/resources/assets/ae2/textures/item) ([they are reusable](https://github.com/AppliedEnergistics/Applied-Energistics-2#license))
+- [ ] add translation to menu entries
+- [ ] maybe find a way to remove the hardcoded path for shaded jar in the pom.xml?

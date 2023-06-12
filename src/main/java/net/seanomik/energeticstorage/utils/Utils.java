@@ -1,7 +1,7 @@
 package net.seanomik.energeticstorage.utils;
 
 import de.tr7zw.changeme.nbtapi.NBTCompound;
-import de.tr7zw.changeme.nbtapi.NBTListCompound;
+import de.tr7zw.changeme.nbtapi.iface.ReadWriteNBT;
 import org.jetbrains.annotations.Nullable;
 import de.tr7zw.changeme.nbtapi.NBTItem;
 import de.tr7zw.changeme.nbtapi.NBTTileEntity;
@@ -147,7 +147,7 @@ public class Utils {
         if (ownerNBT != null && ownerNBT.getCompound("Properties") != null) {
 
             //return ownerNBT.getCompound("Properties").getCompoundList("textures").get(0).getString("Value").equals(Skulls.Computer.getTexture());
-            for (NBTListCompound list : ownerNBT.getCompound("Properties").getCompoundList("textures")) {
+            for (ReadWriteNBT list : ownerNBT.getCompound("Properties").getCompoundList("textures")) {
                 if (list.getString("Value").equals(Skulls.Computer.getTexture())) {
                     return true;
                 }

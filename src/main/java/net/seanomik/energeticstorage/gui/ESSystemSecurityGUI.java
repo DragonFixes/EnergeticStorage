@@ -25,6 +25,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
+import java.util.Collections;
 
 import static net.seanomik.energeticstorage.utils.GUIHelper.createGuiItem;
 
@@ -263,7 +264,10 @@ public class ESSystemSecurityGUI implements InventoryHolder, Listener {
                             Reference.ES_TERMINAL_GUI.openInventory(player, openSystem);
                         } else if (slot == 3) { // Add player
                             new AnvilGUI.Builder()
-                                    .onComplete((plr, text) -> {
+                                    .onClick((anvilSlot, ctx) -> {
+                                        Player plr = ctx.getPlayer();
+                                        String text = ctx.getText();
+                                    //.onComplete((plr, text) -> {
                                         if (text != null && !text.isEmpty()) {
                                             OfflinePlayer offlinePlayer = Bukkit.getOfflinePlayer(text);
                                             if (offlinePlayer.hasPlayedBefore()) {
@@ -282,13 +286,13 @@ public class ESSystemSecurityGUI implements InventoryHolder, Listener {
                                                 }
                                             } else {
                                                 plr.sendMessage(Reference.PREFIX + ChatColor.RED + text + " doesn't exist!");
-                                                return AnvilGUI.Response.text("Player doesn't exist!");
+                                                // TODO find what it does
+                                                //return AnvilGUI.Response.text("Player doesn't exist!");
                                             }
                                         }
-
-                                        return AnvilGUI.Response.close();
+                                        return Collections.singletonList(AnvilGUI.ResponseAction.close());
                                     }).text("Player Name")
-                                      .item(new ItemStack(Material.PLAYER_HEAD))
+                                      .itemLeft(new ItemStack(Material.PLAYER_HEAD))
                                       .title("Enter player to trust.")
                                       .plugin(EnergeticStorage.getPlugin())
                                       .open(player);

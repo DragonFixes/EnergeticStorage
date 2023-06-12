@@ -311,7 +311,9 @@ public class ESTerminalGUI implements InventoryHolder, Listener {
                 }
             } else if (slot == 49) { // Search
                 new AnvilGUI.Builder()
-                        .onComplete((plr, text) -> {
+                        .onClick((number, ctx) -> {
+                            Player plr = ctx.getPlayer();
+                            String text = ctx.getText();
                             if (text != null && !text.isEmpty()) {
                                 Map<ItemStack, Integer> items = openSystem.getAllItems();
                                 Map<ItemStack, Integer> search = new HashMap<>();
@@ -348,7 +350,7 @@ public class ESTerminalGUI implements InventoryHolder, Listener {
                             return AnvilGUI.Response.close();
                         })
                         .text("Enter Item name")
-                        .item(new ItemStack(Material.PLAYER_HEAD))
+                        .itemLeft(new ItemStack(Material.PLAYER_HEAD))
                         .title("Search Terminal.")
                         .plugin(EnergeticStorage.getPlugin())
                         .open(player);

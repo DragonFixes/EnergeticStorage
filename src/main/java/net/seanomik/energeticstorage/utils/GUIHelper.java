@@ -5,8 +5,6 @@ import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class GUIHelper {
@@ -19,20 +17,7 @@ public class GUIHelper {
      * @return An item stack to be used in the GUI.
      */
     public static ItemStack createGuiItem(Material material, String name, String... lore) {
-        ItemStack item = new ItemStack(material, 1);
-        ItemMeta meta = item.getItemMeta();
-        if (meta != null) {
-            meta.setDisplayName(ChatColor.RESET + name);
-
-            if (lore.length > 0) {
-                ArrayList<String> metaLore = new ArrayList<>(Arrays.asList(lore));
-                meta.setLore(metaLore);
-            }
-
-            item.setItemMeta(meta);
-        }
-
-        return item;
+        return createGuiItem(material, name, List.of(lore));
     }
 
     /**
@@ -48,7 +33,9 @@ public class GUIHelper {
         ItemMeta meta = item.getItemMeta();
         if (meta != null) {
             meta.setDisplayName(ChatColor.RESET + name);
-            meta.setLore(lore);
+            if(!lore.isEmpty()) {
+                meta.setLore(lore);
+            }
         }
         item.setItemMeta(meta);
 
