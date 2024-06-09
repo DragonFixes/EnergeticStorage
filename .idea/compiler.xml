@@ -40,7 +40,7 @@
         <module name="tamablefoxes_v1_17_R1 (1)" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
+    <bytecodeTargetLevel target="21">
       <module name="anvilgui" target="1.8" />
       <module name="anvilgui-1_10_R1" target="1.8" />
       <module name="anvilgui-1_11_R1" target="1.8" />

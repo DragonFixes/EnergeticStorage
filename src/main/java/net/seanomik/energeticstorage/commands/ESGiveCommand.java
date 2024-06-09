@@ -1,25 +1,19 @@
 package net.seanomik.energeticstorage.commands;
 
-import net.seanomik.energeticstorage.EnergeticStorage;
 import net.seanomik.energeticstorage.files.PlayersFile;
 import net.seanomik.energeticstorage.utils.ItemConstructor;
 import net.seanomik.energeticstorage.utils.PermissionChecks;
 import net.seanomik.energeticstorage.utils.Reference;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.OfflinePlayer;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
 
-import java.sql.Ref;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
-import static net.md_5.bungee.api.ChatColor.STRIP_COLOR_PATTERN;
 
 public class ESGiveCommand implements TabExecutor {
     @Override

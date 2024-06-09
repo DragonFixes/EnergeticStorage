@@ -1,8 +1,8 @@
 name: EnergeticStorage
-version: ${project.version}
+version: 0.7.9-SNAPSHOT
 main: net.seanomik.energeticstorage.EnergeticStorage
-api-version: 1.19
-authors: [SeanOMik]
+api-version: "1.20"
+authors: [SeanOMik, LiamXSage]
 softdepend: [Multiverse-Core]
 commands:
   esgive:

@@ -336,15 +336,11 @@ public class ESTerminalGUI implements InventoryHolder, Listener {
 
                                 openSearches.put(plr.getUniqueId(), search);
 
-                                Bukkit.getScheduler().runTaskLater(EnergeticStorage.getPlugin(), () -> {
-                                    openInventory(plr, openSystem);
-                                }, (long) 0.5);
+                                Bukkit.getScheduler().runTaskLater(EnergeticStorage.getPlugin(), () -> openInventory(plr, openSystem), 1);
                             } else {
                                 openSearches.remove(plr.getUniqueId());
 
-                                Bukkit.getScheduler().runTaskLater(EnergeticStorage.getPlugin(), () -> {
-                                    openInventory(plr, openSystem);
-                                }, (long) 0.5);
+                                Bukkit.getScheduler().runTaskLater(EnergeticStorage.getPlugin(), () -> openInventory(plr, openSystem), 1);
                             }
 
                             return AnvilGUI.Response.close();
@@ -407,9 +403,7 @@ public class ESTerminalGUI implements InventoryHolder, Listener {
                             if (openSystem.addItem(clickedItem)) {
                                 event.setCancelled(false);
 
-                                Bukkit.getScheduler().runTaskLater(EnergeticStorage.getPlugin(), () -> {
-                                    initializeItems(player, openSystem);
-                                }, (long) 0.1);
+                                Bukkit.getScheduler().runTaskLater(EnergeticStorage.getPlugin(), () -> initializeItems(player, openSystem), 1);
                             }
                         }
 
@@ -423,9 +417,7 @@ public class ESTerminalGUI implements InventoryHolder, Listener {
                             openSystem.removeItem(takingItem);
                             cursor.setAmount(cursor.getAmount() + 1);
 
-                            Bukkit.getScheduler().runTaskLater(EnergeticStorage.getPlugin(), () -> {
-                                initializeItems(player, openSystem);
-                            }, (long) 0.1);
+                            Bukkit.getScheduler().runTaskLater(EnergeticStorage.getPlugin(), () -> initializeItems(player, openSystem), 1);
 
                             break;
                         }
@@ -436,9 +428,7 @@ public class ESTerminalGUI implements InventoryHolder, Listener {
                             // Remove cursor item
                             event.getView().setCursor(null);
 
-                            Bukkit.getScheduler().runTaskLater(EnergeticStorage.getPlugin(), () -> {
-                                initializeItems(player, openSystem);
-                            }, (long) 0.1);
+                            Bukkit.getScheduler().runTaskLater(EnergeticStorage.getPlugin(), () -> initializeItems(player, openSystem), 1);
                         }
 
                         break;
@@ -451,23 +441,18 @@ public class ESTerminalGUI implements InventoryHolder, Listener {
                             if (openSystem.addItem(itemStack)) {
                                 event.setCancelled(false);
 
-                                Bukkit.getScheduler().runTaskLater(EnergeticStorage.getPlugin(), () -> {
-                                    initializeItems(player, openSystem);
-                                }, (long) 0.1);
+                                Bukkit.getScheduler().runTaskLater(EnergeticStorage.getPlugin(), () -> initializeItems(player, openSystem), 1);
                             }
                         }
 
                         break;
                     case INTO:
-                        if (Utils.isItemValid(cursor)) {
-                            if (openSystem.addItem(cursor)) {
+                        if (Utils.isItemValid(cursor) && openSystem.addItem(cursor)) {
                                 event.setCancelled(false);
 
-                                Bukkit.getScheduler().runTaskLater(EnergeticStorage.getPlugin(), () -> {
-                                    initializeItems(player, openSystem);
-                                }, (long) 0.1);
+                                Bukkit.getScheduler().runTaskLater(EnergeticStorage.getPlugin(), () -> initializeItems(player, openSystem), 1);
                             }
-                        }
+
 
                         break;
                     case SHIFT_OUT:
@@ -486,9 +471,7 @@ public class ESTerminalGUI implements InventoryHolder, Listener {
 
                             openSystem.removeItem(toRemoveStack);
 
-                            Bukkit.getScheduler().runTaskLater(EnergeticStorage.getPlugin(), () -> {
-                                initializeItems(player, openSystem);
-                            }, (long) 0.1);
+                            Bukkit.getScheduler().runTaskLater(EnergeticStorage.getPlugin(), () -> initializeItems(player, openSystem), 1);
 
 
                             /*for (Map.Entry<Integer, ItemStack> item : leftOverItems.entrySet()) {
@@ -496,8 +479,7 @@ public class ESTerminalGUI implements InventoryHolder, Listener {
                             }*/
                         }
                         break;
-                    case OUT_HALF:
-                    case OUT:
+                    case OUT_HALF, OUT:
                         if (Utils.isItemValid(clickedItem)) {
                             ItemStack takingItem = clickedItem.clone();
                             takingItem.setAmount((clickType == ClickType.OUT_HALF && clickedItem.getAmount() / 2 > 0) ? clickedItem.getAmount() / 2 : clickedItem.getMaxStackSize());
@@ -525,9 +507,7 @@ public class ESTerminalGUI implements InventoryHolder, Listener {
                                 event.getView().setCursor(takingItem);
                             }
 
-                            Bukkit.getScheduler().runTaskLater(EnergeticStorage.getPlugin(), () -> {
-                                initializeItems(player, openSystem);
-                            }, (long) 0.1);
+                            Bukkit.getScheduler().runTaskLater(EnergeticStorage.getPlugin(), () -> initializeItems(player, openSystem), 1);
                         }
                         break;
                 }

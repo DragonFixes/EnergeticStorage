@@ -33,7 +33,7 @@ public class ItemRecipes {
     }
 
     private static void registerDriveRecipes() {
-        try { // If the plugin was reloaded, a exception will be thrown.
+        try { // If the plugin was reloaded, an exception will be thrown.
             // Register Drive 1k
             ItemStack drive1k = ItemConstructor.createDrive(1024, 0, 0);
 

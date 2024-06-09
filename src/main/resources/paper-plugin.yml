@@ -1,0 +1,14 @@
+name: EnergeticStorage
+main: net.seanomik.energeticstorage.EnergeticStorage
+version: 0.7.9-SNAPSHOT
+description: "EnergeticStorage is a plugin for managing energetic storage systems."
+author: "SeanOMik, LiamXSage"
+api-version: "1.20"
+load: POSTWORLD
+loader: net.seanomik.energeticstorage.DependencyLoader
+
+dependencies:
+  server:
+    Multiverse-Core:
+      required: false
+      load: BEFORE
