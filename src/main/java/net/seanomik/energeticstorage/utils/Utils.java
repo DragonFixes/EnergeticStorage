@@ -1,7 +1,11 @@
 package net.seanomik.energeticstorage.utils;
 
+import com.mojang.authlib.GameProfile;
+import com.mojang.authlib.properties.Property;
 import de.tr7zw.changeme.nbtapi.NBTCompound;
 import de.tr7zw.changeme.nbtapi.iface.ReadWriteNBT;
+import org.bukkit.block.Skull;
+import org.bukkit.inventory.meta.SkullMeta;
 import org.jetbrains.annotations.Nullable;
 import de.tr7zw.changeme.nbtapi.NBTItem;
 import de.tr7zw.changeme.nbtapi.NBTTileEntity;
@@ -15,6 +19,7 @@ import org.bukkit.block.Block;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import java.lang.reflect.Field;
 import java.util.*;
 
 public class Utils {
@@ -134,29 +139,55 @@ public class Utils {
     }
 
     public static boolean isBlockASystem(Block block) {
-        NBTTileEntity blockNBT = new NBTTileEntity(block.getState());
-        String version = Bukkit.getServer().getClass().getPackage().getName().split("\\.")[3];
-
-        NBTCompound ownerNBT;
-        if (blockNBT.hasKey("SkullOwner")) {
-            ownerNBT = blockNBT.getCompound("SkullOwner");
-        } else {
-            ownerNBT = blockNBT.getCompound("Owner");
-        }
-
-        if (ownerNBT != null && ownerNBT.getCompound("Properties") != null) {
-
-            //return ownerNBT.getCompound("Properties").getCompoundList("textures").get(0).getString("Value").equals(Skulls.Computer.getTexture());
-            for (ReadWriteNBT list : ownerNBT.getCompound("Properties").getCompoundList("textures")) {
-                if (list.getString("Value").equals(Skulls.Computer.getTexture())) {
-                    return true;
-                }
+        try {
+            // Prüfen, ob der Block ein Spieler-Kopf ist
+            if (block.getType() != Material.PLAYER_HEAD) {
+                System.out.println("Block is not a player head.");
+                return false;
             }
+
+            Skull skullMeta = (Skull) block.getState();
+            if (skullMeta == null) {
+                System.out.println("SkullMeta is null.");
+                return false;
+            }
+
+            // Abrufen der Profileigenschaften
+            GameProfile profile = null;
+            try {
+                Field profileField = skullMeta.getClass().getDeclaredField("profile");
+                profileField.setAccessible(true);
+                profile = (GameProfile) profileField.get(skullMeta);
+            } catch (NoSuchFieldException | IllegalAccessException e) {
+                e.printStackTrace();
+                return false;
+            }
+
+            if (profile == null) {
+                System.out.println("Profile is null.");
+                return false;
+            }
+
+            // Überprüfen der Textur-Eigenschaften
+            if (profile.getProperties().containsKey("textures")) {
+                for (Property property : profile.getProperties().get("textures")) {
+                    System.out.println("Checking texture value: " + property.value());
+                    if (property.value().equals(Skulls.Computer.getTexture())) {
+                        return true;
+                    }
+                }
+            } else {
+                System.out.println("No textures property found in profile.");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
             return false;
         }
 
         return false;
     }
+
+
 
     public static boolean isItemADrive(ItemStack item) {
         NBTItem nbtItem = new NBTItem(item);
