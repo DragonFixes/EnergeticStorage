@@ -4,6 +4,7 @@ import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.properties.Property;
 import de.tr7zw.changeme.nbtapi.NBTCompound;
 import de.tr7zw.changeme.nbtapi.iface.ReadWriteNBT;
+import net.seanomik.energeticstorage.EnergeticStorage;
 import org.bukkit.block.Skull;
 import org.bukkit.inventory.meta.SkullMeta;
 import org.jetbrains.annotations.Nullable;
@@ -139,16 +140,17 @@ public class Utils {
     }
 
     public static boolean isBlockASystem(Block block) {
+        var logger = EnergeticStorage.getPlugin().getLogger();
         try {
             // Prüfen, ob der Block ein Spieler-Kopf ist
             if (block.getType() != Material.PLAYER_HEAD) {
-                System.out.println("Block is not a player head.");
+                logger.severe("Block is not a player head.");
                 return false;
             }
 
             Skull skullMeta = (Skull) block.getState();
             if (skullMeta == null) {
-                System.out.println("SkullMeta is null.");
+                logger.severe("SkullMeta is null.");
                 return false;
             }
 
@@ -164,23 +166,22 @@ public class Utils {
             }
 
             if (profile == null) {
-                System.out.println("Profile is null.");
+                logger.info("Profile is null.");
                 return false;
             }
 
             // Überprüfen der Textur-Eigenschaften
             if (profile.getProperties().containsKey("textures")) {
                 for (Property property : profile.getProperties().get("textures")) {
-                    System.out.println("Checking texture value: " + property.value());
                     if (property.value().equals(Skulls.Computer.getTexture())) {
                         return true;
                     }
                 }
             } else {
-                System.out.println("No textures property found in profile.");
+                logger.severe("No textures property found in profile.");
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.severe("An error occurred while checking if block is a system.\n" + e.getMessage());
             return false;
         }
 
