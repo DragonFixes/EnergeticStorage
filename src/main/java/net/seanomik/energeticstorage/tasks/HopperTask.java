@@ -97,7 +97,7 @@ public class HopperTask extends BukkitRunnable {
                     // Get all relative hoppers touching the system.
                     Map<BlockFace, Block> hoppers = getRelativeHoppers(systemBlock);
                     for (Map.Entry<BlockFace, Block> entry : hoppers.entrySet()) {
-                        Bukkit.getScheduler().runTask(EnergeticStorage.getPlugin(), () -> {
+                        Bukkit.getScheduler().runTask(EnergeticStorage.getInstance(), () -> {
 
                             try {
                                 org.bukkit.block.Hopper hopper = (org.bukkit.block.Hopper) entry.getValue().getState();

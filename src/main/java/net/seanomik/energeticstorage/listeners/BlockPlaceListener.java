@@ -1,8 +1,6 @@
 package net.seanomik.energeticstorage.listeners;
 
-import de.tr7zw.changeme.nbtapi.NBTTileEntity;
 import net.seanomik.energeticstorage.EnergeticStorage;
-import net.seanomik.energeticstorage.Skulls;
 import net.seanomik.energeticstorage.files.PlayersFile;
 import net.seanomik.energeticstorage.objects.ESSystem;
 import net.seanomik.energeticstorage.utils.PermissionChecks;
@@ -29,7 +27,7 @@ public class BlockPlaceListener implements Listener {
             if (Utils.isBlockASystem(block)) {
                 if (PermissionChecks.canCreateSystem(player)) {
                     // Cache and store the new system on another thread
-                    Bukkit.getScheduler().runTaskAsynchronously(EnergeticStorage.getPlugin(), () -> {
+                    Bukkit.getScheduler().runTaskAsynchronously(EnergeticStorage.getInstance(), () -> {
                         ESSystem newSystem = new ESSystem(player.getUniqueId(), UUID.randomUUID(), block.getLocation());
                         PlayersFile.savePlayerSystem(newSystem);
 

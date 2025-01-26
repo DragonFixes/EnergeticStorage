@@ -272,7 +272,7 @@ public class ESTerminalGUI implements InventoryHolder, Listener {
             PlayersFile.savePlayerSystem(openSystems.get(player.getUniqueId()));
 
             // Check if the closing inventory is not just opening the search menu
-            Bukkit.getScheduler().runTaskLaterAsynchronously(EnergeticStorage.getPlugin(), () -> {
+            Bukkit.getScheduler().runTaskLaterAsynchronously(EnergeticStorage.getInstance(), () -> {
                 InventoryView view = player.getOpenInventory();
                 if (!view.getTitle().equals("Search Terminal.") && !view.getTitle().equals(title)) {
                     openSystems.remove(player.getUniqueId());
@@ -336,11 +336,11 @@ public class ESTerminalGUI implements InventoryHolder, Listener {
 
                                 openSearches.put(plr.getUniqueId(), search);
 
-                                Bukkit.getScheduler().runTaskLater(EnergeticStorage.getPlugin(), () -> openInventory(plr, openSystem), 1);
+                                Bukkit.getScheduler().runTaskLater(EnergeticStorage.getInstance(), () -> openInventory(plr, openSystem), 1);
                             } else {
                                 openSearches.remove(plr.getUniqueId());
 
-                                Bukkit.getScheduler().runTaskLater(EnergeticStorage.getPlugin(), () -> openInventory(plr, openSystem), 1);
+                                Bukkit.getScheduler().runTaskLater(EnergeticStorage.getInstance(), () -> openInventory(plr, openSystem), 1);
                             }
 
                             return AnvilGUI.Response.close();
@@ -348,7 +348,7 @@ public class ESTerminalGUI implements InventoryHolder, Listener {
                         .text("Enter Item name")
                         .itemLeft(new ItemStack(Material.PLAYER_HEAD))
                         .title("Search Terminal.")
-                        .plugin(EnergeticStorage.getPlugin())
+                        .plugin(EnergeticStorage.getInstance())
                         .open(player);
             } else if (slot == 50) { // Next page
                 Map<ItemStack, Integer> items = openSystem.getAllItems();
@@ -403,7 +403,7 @@ public class ESTerminalGUI implements InventoryHolder, Listener {
                             if (openSystem.addItem(clickedItem)) {
                                 event.setCancelled(false);
 
-                                Bukkit.getScheduler().runTaskLater(EnergeticStorage.getPlugin(), () -> initializeItems(player, openSystem), 1);
+                                Bukkit.getScheduler().runTaskLater(EnergeticStorage.getInstance(), () -> initializeItems(player, openSystem), 1);
                             }
                         }
 
@@ -417,7 +417,7 @@ public class ESTerminalGUI implements InventoryHolder, Listener {
                             openSystem.removeItem(takingItem);
                             cursor.setAmount(cursor.getAmount() + 1);
 
-                            Bukkit.getScheduler().runTaskLater(EnergeticStorage.getPlugin(), () -> initializeItems(player, openSystem), 1);
+                            Bukkit.getScheduler().runTaskLater(EnergeticStorage.getInstance(), () -> initializeItems(player, openSystem), 1);
 
                             break;
                         }
@@ -428,7 +428,7 @@ public class ESTerminalGUI implements InventoryHolder, Listener {
                             // Remove cursor item
                             event.getView().setCursor(null);
 
-                            Bukkit.getScheduler().runTaskLater(EnergeticStorage.getPlugin(), () -> initializeItems(player, openSystem), 1);
+                            Bukkit.getScheduler().runTaskLater(EnergeticStorage.getInstance(), () -> initializeItems(player, openSystem), 1);
                         }
 
                         break;
@@ -441,7 +441,7 @@ public class ESTerminalGUI implements InventoryHolder, Listener {
                             if (openSystem.addItem(itemStack)) {
                                 event.setCancelled(false);
 
-                                Bukkit.getScheduler().runTaskLater(EnergeticStorage.getPlugin(), () -> initializeItems(player, openSystem), 1);
+                                Bukkit.getScheduler().runTaskLater(EnergeticStorage.getInstance(), () -> initializeItems(player, openSystem), 1);
                             }
                         }
 
@@ -450,7 +450,7 @@ public class ESTerminalGUI implements InventoryHolder, Listener {
                         if (Utils.isItemValid(cursor) && openSystem.addItem(cursor)) {
                                 event.setCancelled(false);
 
-                                Bukkit.getScheduler().runTaskLater(EnergeticStorage.getPlugin(), () -> initializeItems(player, openSystem), 1);
+                                Bukkit.getScheduler().runTaskLater(EnergeticStorage.getInstance(), () -> initializeItems(player, openSystem), 1);
                             }
 
 
@@ -471,7 +471,7 @@ public class ESTerminalGUI implements InventoryHolder, Listener {
 
                             openSystem.removeItem(toRemoveStack);
 
-                            Bukkit.getScheduler().runTaskLater(EnergeticStorage.getPlugin(), () -> initializeItems(player, openSystem), 1);
+                            Bukkit.getScheduler().runTaskLater(EnergeticStorage.getInstance(), () -> initializeItems(player, openSystem), 1);
 
 
                             /*for (Map.Entry<Integer, ItemStack> item : leftOverItems.entrySet()) {
@@ -507,7 +507,7 @@ public class ESTerminalGUI implements InventoryHolder, Listener {
                                 event.getView().setCursor(takingItem);
                             }
 
-                            Bukkit.getScheduler().runTaskLater(EnergeticStorage.getPlugin(), () -> initializeItems(player, openSystem), 1);
+                            Bukkit.getScheduler().runTaskLater(EnergeticStorage.getInstance(), () -> initializeItems(player, openSystem), 1);
                         }
                         break;
                 }

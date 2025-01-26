@@ -16,11 +16,12 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import tv.quaint.storage.resources.flat.simple.SimpleConfiguration;
 
 import java.io.File;
 import java.util.*;
 
-public class PlayersFile extends YamlConfiguration {
+public class PlayersFile extends SimpleConfiguration {
     private static PlayersFile config;
     private EnergeticStorage plugin;
     private File configFile;
@@ -33,12 +34,18 @@ public class PlayersFile extends YamlConfiguration {
     }
 
     public PlayersFile() {
+        super("players.yml", EnergeticStorage.getInstance());
         this.plugin = (EnergeticStorage) EnergeticStorage.getPlugin((Class) EnergeticStorage.class);
         this.configFile = new File(this.plugin.getDataFolder(), "players.yml");
         this.saveDefault();
         this.reload();
     }
-    
+
+    @Override
+    public void init() {
+
+    }
+
     public void reload() {
         try {
             super.load(this.configFile);
@@ -47,62 +54,15 @@ public class PlayersFile extends YamlConfiguration {
             e.printStackTrace();
         }
     }
-    
-    public void save() {
-        try {
-            super.save(this.configFile);
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-    
-    public void saveDefault() {
-        this.plugin.saveResource("players.yml", false);
-    }
-    
-    public void saveConfig() {
-        try {
-            super.save(this.configFile);
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-    
-    public void reloadConfig() {
-        try {
-            super.load(this.configFile);
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-    
-    public void saveDefaultConfig() {
-        try {
-            this.plugin.saveDefaultConfig();
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    // Auto replace alternate color codes.
-    @Override
-    public String getString(String path) {
-        // Only attempt to translate if the text is not empty.
-        return (super.getString(path) == null || super.getString(path).isEmpty()) ? super.getString(path) : ChatColor.translateAlternateColorCodes('&', super.getString(path));
-    }
 
     public static boolean doesPlayerHaveSystem(UUID uuid) {
-        return getConfig().contains("players." + uuid + ".systems");
+        return getConfig().getResource().contains("players." + uuid + ".systems");
     }
 
     public static Map<UUID, List<ESSystem>> getAllSystems() {
         Map<UUID, List<ESSystem>> allSystems = new HashMap<>();
 
-        for (String playerUUIDStr : getConfig().getConfigurationSection("players").getKeys(false)) {
+        for (String playerUUIDStr : getConfig().getResource().singleLayerKeySet("players")) {
             UUID playerUUID = UUID.fromString(playerUUIDStr);
             allSystems.put(playerUUID, getPlayersSystems(playerUUID));
         }

@@ -153,7 +153,7 @@ public class ESSystemSecurityGUI implements InventoryHolder, Listener {
         // Checks if the closing inventory is this inventory.
         if (inventory.getHolder() != null && inventory.getHolder() == this) {
             // This checks if the closing inventory is not a menu of this GUI class.
-            Bukkit.getScheduler().runTaskLater(EnergeticStorage.getPlugin(), ()-> {
+            Bukkit.getScheduler().runTaskLater(EnergeticStorage.getInstance(), ()-> {
                 Inventory inventory1 = event.getPlayer().getOpenInventory().getTopInventory();
 
                 Player player = (Player) event.getPlayer();
@@ -294,7 +294,7 @@ public class ESSystemSecurityGUI implements InventoryHolder, Listener {
                                     }).text("Player Name")
                                       .itemLeft(new ItemStack(Material.PLAYER_HEAD))
                                       .title("Enter player to trust.")
-                                      .plugin(EnergeticStorage.getPlugin())
+                                      .plugin(EnergeticStorage.getInstance())
                                       .open(player);
                         } else if (slot == 4) { // Remove player
                             openRemoveInventory(player, openSystem);

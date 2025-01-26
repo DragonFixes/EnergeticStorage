@@ -3,7 +3,12 @@ version: 0.7.9-SNAPSHOT
 main: net.seanomik.energeticstorage.EnergeticStorage
 api-version: "1.20"
 authors: [SeanOMik, LiamXSage]
-softdepend: [Multiverse-Core]
+depend:
+  - NBTAPI
+  - BukkitOfUtils
+softdepend:
+  - Multiverse-Core
+  - PlaceholderAPI
 commands:
   esgive:
     aliases: [egive]

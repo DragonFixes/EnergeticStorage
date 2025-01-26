@@ -1,6 +1,10 @@
 package net.seanomik.energeticstorage;
 
+import com.destroystokyo.paper.profile.PlayerProfile;
+import com.destroystokyo.paper.profile.ProfileProperty;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.Server;
 import org.bukkit.inventory.ItemStack;
 
 import com.mojang.authlib.GameProfile;
@@ -8,44 +12,43 @@ import com.mojang.authlib.properties.Property;
 import org.bukkit.inventory.meta.SkullMeta;
 
 import java.lang.reflect.Field;
+import java.net.URI;
+import java.net.URL;
 import java.util.UUID;
 
 public enum Skulls {
 
-    LeftGreenArrow("LeftGreenArrow", "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZTRjNDE3NDZhZjU1N2EyNGJlOGEwOTAzNjlhNTkxYWU2M2Q1Y2U5YzRiZjQwNWQzNTQyNDdkODEwYzdjNyJ9fX0=", "5da5509d-136d-4716-bc2d-d04f82058e91"),
-    UpGreenArrow("UpGreenArrow", "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYjIyMWRhNDQxOGJkM2JmYjQyZWI2NGQyYWI0MjljNjFkZWNiOGY0YmY3ZDRjZmI3N2ExNjJiZTNkY2IwYjkyNyJ9fX0=", "fb271319-5c42-4f5d-9389-e89ca7caf96a"),
-    Computer("Computer", "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzhhMGM1MDg5N2FjZmM2ZmMzNDUxODUwOGQ5NDBlY2Q1Mjg0NmI3Zjc2NGRmZTI0YTU3ZjZmYmNiNDUzNTE5NCJ9fX0=", "0676e961-2d31-4819-82be-c1b499f00f8f");
+    LeftGreenArrow("LeftGreenArrow", "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMWExZWYzOThhMTdmMWFmNzQ3NzAxNDUxN2Y3ZjE0MWQ4ODZkZjQxYTMyYzczOGNjOGE4M2ZiNTAyOTdiZDkyMSJ9fX0=", "b683cce5-08d5-539e-a101-98766c6ccca9"),
+    UpGreenArrow("UpGreenArrow", "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNGNlMzZmY2IxZTVmNmIzNjUxN2ZiYmViOWNiZjRiMGMwNWMzMGQ4YmRiNTE1NDgyNGU2MGU2ZDU1MGY1MjhlOSJ9fX0=", "54a1f8d9-8545-5f89-8b87-7ff911f593d5"),
+    Computer("Computer", "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZDQwN2ViMjBhMjdlZDdiYzc2YTRlMmNlMGI0OTg4YzY1Y2E2NmQwZTU2Zjk3MWRjNDE5YmIzMWUwZmRhMGYzNiJ9fX0=", "ca8fef39-69c1-6a61-7ff4-bfe17d7f55a9");
 
     private ItemStack item;
     private String name;
-    private String texture;
+    private String textures;
     private String uuid;
 
-    Skulls(String name, String texture, String uuid) {
-        this.texture = texture;
+    Skulls(String name, String textures, String uuid) {
+        this.textures = textures;
         this.name = name;
         this.uuid = uuid;
         item = createSkull();
     }
 
-    private ItemStack createSkull() {
-        ItemStack head = new ItemStack(Material.PLAYER_HEAD, 1);
-        SkullMeta meta = (SkullMeta) head.getItemMeta();
-        GameProfile profile = new GameProfile(UUID.randomUUID(), "head" + texture.substring(0, Math.min(texture.length(), 6)));
+    private static ItemStack createSkull(String textures) {
+        final ItemStack head = new ItemStack(Material.PLAYER_HEAD);
 
-        profile.getProperties().put("textures", new Property("textures", texture));
+        head.editMeta(SkullMeta.class, skullMeta -> {
+            final UUID uuid = UUID.randomUUID();
+            final PlayerProfile playerProfile = Bukkit.createProfile(uuid, uuid.toString().substring(0, 16));
+            playerProfile.setProperty(new ProfileProperty("textures", textures));
 
-        try {
-            Field profileField = meta.getClass().getDeclaredField("profile");
-            profileField.setAccessible(true);
-            profileField.set(meta, profile);
-        } catch (NoSuchFieldException | IllegalAccessException e) {
-            e.printStackTrace();
-        }
-
-        head.setItemMeta(meta);
-
+            skullMeta.setPlayerProfile(playerProfile);
+        });
         return head;
+    }
+
+    private ItemStack createSkull() {
+        return createSkull(textures);
     }
 
     public ItemStack getItemStack() {
@@ -56,5 +59,5 @@ public enum Skulls {
         return name;
     }
 
-    public String getTexture() { return texture; }
+    public String getTextures() { return textures; }
 }

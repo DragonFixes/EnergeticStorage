@@ -17,7 +17,7 @@ public class ItemRecipes {
         try {
             // Register system block
             ItemStack esSystem = ItemConstructor.createSystemBlock();
-            ShapedRecipe systemRecipe = new ShapedRecipe(new NamespacedKey(EnergeticStorage.getPlugin(), "es_system"), esSystem)
+            ShapedRecipe systemRecipe = new ShapedRecipe(new NamespacedKey(EnergeticStorage.getInstance(), "es_system"), esSystem)
                     .shape("III",
                            "RGR",
                            "DID")
@@ -37,7 +37,7 @@ public class ItemRecipes {
             // Register Drive 1k
             ItemStack drive1k = ItemConstructor.createDrive(1024, 0, 0);
 
-            ShapedRecipe drv1k = new ShapedRecipe(new NamespacedKey(EnergeticStorage.getPlugin(), "es_drive_1k"), drive1k)
+            ShapedRecipe drv1k = new ShapedRecipe(new NamespacedKey(EnergeticStorage.getInstance(), "es_drive_1k"), drive1k)
                     .shape("RCR",
                            "CRC",
                            "III")
@@ -49,7 +49,7 @@ public class ItemRecipes {
             // Register Drive 4k
             ItemStack drive4k = ItemConstructor.createDrive(4096, 0, 0);
 
-            ShapedRecipe drv4k = new ShapedRecipe(new NamespacedKey(EnergeticStorage.getPlugin(), "es_drive_4k"), drive4k)
+            ShapedRecipe drv4k = new ShapedRecipe(new NamespacedKey(EnergeticStorage.getInstance(), "es_drive_4k"), drive4k)
                     .shape("RBR",
                            "BRB",
                            "III")
@@ -61,7 +61,7 @@ public class ItemRecipes {
             // Register Drive 16k
             ItemStack drive16k = ItemConstructor.createDrive(16384, 0, 0);
 
-            ShapedRecipe drv16k = new ShapedRecipe(new NamespacedKey(EnergeticStorage.getPlugin(), "es_drive_16k"), drive16k)
+            ShapedRecipe drv16k = new ShapedRecipe(new NamespacedKey(EnergeticStorage.getInstance(), "es_drive_16k"), drive16k)
                     .shape("RGR",
                            "GRG",
                            "III")
@@ -73,7 +73,7 @@ public class ItemRecipes {
             // Register Drive 64k
             ItemStack drive64k = ItemConstructor.createDrive(65536, 0, 0);
 
-            ShapedRecipe drv64k = new ShapedRecipe(new NamespacedKey(EnergeticStorage.getPlugin(), "es_drive_64k"), drive64k)
+            ShapedRecipe drv64k = new ShapedRecipe(new NamespacedKey(EnergeticStorage.getInstance(), "es_drive_64k"), drive64k)
                     .shape("RDR",
                            "DRD",
                            "III")

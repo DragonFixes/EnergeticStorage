@@ -1,15 +1,11 @@
 package net.seanomik.energeticstorage.utils;
 
-import com.mojang.authlib.GameProfile;
-import com.mojang.authlib.properties.Property;
-import de.tr7zw.changeme.nbtapi.NBTCompound;
-import de.tr7zw.changeme.nbtapi.iface.ReadWriteNBT;
+import com.destroystokyo.paper.profile.PlayerProfile;
 import net.seanomik.energeticstorage.EnergeticStorage;
 import org.bukkit.block.Skull;
 import org.bukkit.inventory.meta.SkullMeta;
 import org.jetbrains.annotations.Nullable;
 import de.tr7zw.changeme.nbtapi.NBTItem;
-import de.tr7zw.changeme.nbtapi.NBTTileEntity;
 import net.seanomik.energeticstorage.Skulls;
 import net.seanomik.energeticstorage.objects.ESSystem;
 import org.bukkit.Bukkit;
@@ -20,8 +16,8 @@ import org.bukkit.block.Block;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import java.lang.reflect.Field;
 import java.util.*;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class Utils {
     public static String convertLocationToString(final Location l) {
@@ -140,45 +136,47 @@ public class Utils {
     }
 
     public static boolean isBlockASystem(Block block) {
-        var logger = EnergeticStorage.getPlugin().getLogger();
+        var logger = EnergeticStorage.getInstance().getLogger();
         try {
-            // Prüfen, ob der Block ein Spieler-Kopf ist
             if (block.getType() != Material.PLAYER_HEAD) {
                 logger.severe("Block is not a player head.");
                 return false;
             }
 
-            Skull skullMeta = (Skull) block.getState();
-            if (skullMeta == null) {
-                logger.severe("SkullMeta is null.");
-                return false;
-            }
-
-            // Abrufen der Profileigenschaften
-            GameProfile profile = null;
             try {
-                Field profileField = skullMeta.getClass().getDeclaredField("profile");
-                profileField.setAccessible(true);
-                profile = (GameProfile) profileField.get(skullMeta);
-            } catch (NoSuchFieldException | IllegalAccessException e) {
-                e.printStackTrace();
-                return false;
-            }
+                Skull skull = (Skull) block.getState();
 
-            if (profile == null) {
-                logger.info("Profile is null.");
-                return false;
-            }
+                ItemStack systemBlock = Skulls.Computer.getItemStack();
+                SkullMeta sMeta = (SkullMeta) systemBlock.getItemMeta();
 
-            // Überprüfen der Textur-Eigenschaften
-            if (profile.getProperties().containsKey("textures")) {
-                for (Property property : profile.getProperties().get("textures")) {
-                    if (property.value().equals(Skulls.Computer.getTexture())) {
-                        return true;
-                    }
+                PlayerProfile skullProfile = skull.getPlayerProfile();;
+                PlayerProfile sProfile = sMeta.getPlayerProfile();
+                if (skullProfile == null || sProfile == null) return false;
+
+                if (skullProfile == sProfile) {
+                    return true;
                 }
-            } else {
-                logger.severe("No textures property found in profile.");
+
+                if (skullProfile.getProperties() == sProfile.getProperties()) {
+                    return true;
+                }
+
+                AtomicBoolean isSystem = new AtomicBoolean(false);
+                skullProfile.getProperties().forEach(property -> {
+                    if (property.getName().equals("textures")) {
+                        sProfile.getProperties().forEach(sProperty -> {
+                            if (sProperty.getName().equals("textures")) {
+                                if (property.getValue().equals(sProperty.getValue())) {
+                                    isSystem.set(true);
+                                }
+                            }
+                        });
+                    }
+                });
+
+                return isSystem.get();
+            } catch (Throwable e) {
+                logger.severe("An error occurred while checking if block is a system.\n" + e.getMessage());
             }
         } catch (Exception e) {
             logger.severe("An error occurred while checking if block is a system.\n" + e.getMessage());

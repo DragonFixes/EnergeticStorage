@@ -39,7 +39,7 @@ public class BlockBreakListener implements Listener {
                         }
 
                         // Remove the system from cache and storage
-                        Bukkit.getScheduler().runTaskAsynchronously(EnergeticStorage.getPlugin(), () -> {
+                        Bukkit.getScheduler().runTaskAsynchronously(EnergeticStorage.getInstance(), () -> {
                             PlayersFile.removePlayerSystem(player.getUniqueId(), esSystem.getUUID());
 
                             List<ESSystem> systems = new LinkedList<>(Reference.ES_SYSTEMS.get(player.getUniqueId()));

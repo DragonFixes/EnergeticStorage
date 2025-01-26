@@ -23,7 +23,6 @@
         <module name="tamablefoxes" />
         <module name="anvilgui-1_13_R1" />
         <module name="anvilgui-1_13_R2" />
-        <module name="energeticstorage" />
         <module name="anvilgui-1_16_R1" />
         <module name="anvilgui-1_16_R2" />
         <module name="anvilgui-1_16_R3" />
@@ -38,6 +37,50 @@
         <module name="anvilgui-1_12_R1" />
         <module name="tamablefoxes_v1_17_R1" />
         <module name="tamablefoxes_v1_17_R1 (1)" />
+      </profile>
+      <profile name="Gradle Imported" enabled="true">
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.Streamline-Essentials/BukkitOfUtils/master-SNAPSHOT/4a8a4b07b91662f27a13c324216e2894a18872fc/BukkitOfUtils-master-SNAPSHOT.jar" />
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.projectlombok/lombok/1.18.30/f195ee86e6c896ea47a1d39defbe20eb59cd149d/lombok-1.18.30.jar" />
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.streamline-essentials/UniversalScheduler/main-SNAPSHOT/b5e14747aa66f69f273e807155e3341ba1f43fa/UniversalScheduler-main-SNAPSHOT.jar" />
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.ben-manes.caffeine/caffeine/3.1.8/24795585df8afaf70a2cd534786904ea5889c047/caffeine-3.1.8.jar" />
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.hamza-cskn.obliviate-invs/core/4.1.12/1b5719f6adfbc8d1ee104629bc992abe02034057/core-4.1.12.jar" />
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.kyori/adventure-text-serializer-legacy/4.13.1/aa2bae0c78ac6863b0a137a2133422f588d92a32/adventure-text-serializer-legacy-4.13.1.jar" />
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.kyori/adventure-api/4.13.1/5a68f15c90e328378f64d227474454779522246/adventure-api-4.13.1.jar" />
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.kyori/adventure-key/4.13.1/f5deec8aaa84e00794724f694fb0fc43cca02d0c/adventure-key-4.13.1.jar" />
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.kyori/adventure-text-serializer-gson/4.13.1/6c96295a35605beaf6db6f5dcc2a76abed59fc08/adventure-text-serializer-gson-4.13.1.jar" />
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.11.0/527175ca6d81050b53bdd4c457a6d6e017626b0e/gson-2.11.0.jar" />
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.server-utilities/TheBase/c8388399/d195bca462cfe4d8f4caea77148f5890be29466c/TheBase-c8388399.jar" />
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.checkerframework/checker-qual/3.37.0/ba74746d38026581c12166e164bb3c15e90cc4ea/checker-qual-3.37.0.jar" />
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.errorprone/error_prone_annotations/2.27.0/91b2c29d8a6148b5e2e4930f070d4840e2e48e34/error_prone_annotations-2.27.0.jar" />
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.simplix-softworks/simplixstorage/3.2.7/f8f7b1e783077ae1f3a52d8f4d114da30f288ff8/simplixstorage-3.2.7.jar" />
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.xerial/sqlite-jdbc/3.46.1.0/97ca06712e2afa8c0e551245da72280fca5474cf/sqlite-jdbc-3.46.1.0.jar" />
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.zaxxer/HikariCP/5.1.0/8c96e36c14461fc436bb02b264b96ef3ca5dca8c/HikariCP-5.1.0.jar" />
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.objecthunter/exp4j/0.4.8/cf1cfc0f958077d86ac7452c7e36d944689b2ec4/exp4j-0.4.8.jar" />
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.re2j/re2j/1.7/2949632c1b4acce0d7784f28e3152e9cf3c2ec7a/re2j-1.7.jar" />
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.hamza-cskn/obliviate-utils/2.0.6/568ed2a0483711d136020c6d18b5c0382efa3f23/obliviate-utils-2.0.6.jar" />
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.esotericsoftware.yamlbeans/yamlbeans/1.15/36ea62cb4398d0a1e14b94c7013721e451094990/yamlbeans-1.15.jar" />
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.json/json/20231013/e22e0c040fe16f04ffdb85d851d77b07fc05ea52/json-20231013.jar" />
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains/annotations/22.0.0/fb9bebc90794c7602e73d6ed0cb165a0c650be62/annotations-22.0.0.jar" />
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.mysql/mysql-connector-j/8.0.33/9e64d997873abc4318620264703d3fdb6b02dd5a/mysql-connector-j-8.0.33.jar" />
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.slf4j/slf4j-api/1.7.36/6c62681a2f655b49963a5983b8b0950a6120ae14/slf4j-api-1.7.36.jar" />
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.hamza-cskn.obliviate-utils/database/2.0.6/7e1d3aaa8170dd9bd83ee16d3dcd1bee4361f843/database-2.0.6.jar" />
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.hamza-cskn.obliviate-utils/placeholder/2.0.6/987a3b238205c063ba24e1dd7903b72ee1f75123/placeholder-2.0.6.jar" />
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.hamza-cskn.obliviate-utils/string/2.0.6/68ba28039190c003650bacee591e0d8c2921f467/string-2.0.6.jar" />
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.hamza-cskn.obliviate-utils/version-detection/2.0.6/164cb66460e4ca6b81490dec448bfe5594000cb6/version-detection-2.0.6.jar" />
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.kyori/examination-string/1.3.0/6f34afef5c54ccce4996bc321abf77518b55b4bd/examination-string-1.3.0.jar" />
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.kyori/examination-api/1.3.0/8a2d185275307f1e2ef2adf7152b9a0d1d44c30b/examination-api-1.3.0.jar" />
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.protobuf/protobuf-java/3.21.9/ed1240d9231044ce6ccf1978512f6e44416bb7e7/protobuf-java-3.21.9.jar" />
+        </processorPath>
+        <module name="energeticstorage.main" />
+      </profile>
+      <profile name="Gradle Imported" enabled="true">
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.projectlombok/lombok/1.18.30/f195ee86e6c896ea47a1d39defbe20eb59cd149d/lombok-1.18.30.jar" />
+        </processorPath>
+        <module name="energeticstorage.test" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="21">

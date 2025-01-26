@@ -1,6 +1,5 @@
 package net.seanomik.energeticstorage.utils;
 
-import net.seanomik.energeticstorage.files.ConfigFile;
 import net.seanomik.energeticstorage.gui.ESDriveGUI;
 import net.seanomik.energeticstorage.gui.ESSystemSecurityGUI;
 import net.seanomik.energeticstorage.gui.ESTerminalGUI;

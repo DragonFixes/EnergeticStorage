@@ -1,8 +1,11 @@
 package net.seanomik.energeticstorage;
 
+import host.plas.bou.BetterPlugin;
+import host.plas.bou.events.ListenerConglomerate;
+import lombok.Getter;
+import lombok.Setter;
 import net.seanomik.energeticstorage.commands.ESGiveCommand;
 import net.seanomik.energeticstorage.commands.ESReloadCommand;
-import net.seanomik.energeticstorage.files.ConfigFile;
 import net.seanomik.energeticstorage.files.PlayersFile;
 import net.seanomik.energeticstorage.listeners.BlockBreakListener;
 import net.seanomik.energeticstorage.listeners.BlockPlaceListener;
@@ -13,24 +16,24 @@ import net.seanomik.energeticstorage.utils.ItemRecipes;
 import net.seanomik.energeticstorage.utils.Reference;
 import org.bukkit.command.PluginCommand;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.Listener;
 import org.bukkit.event.world.WorldSaveEvent;
 import org.bukkit.permissions.Permission;
 import org.bukkit.permissions.PermissionDefault;
 import org.bukkit.plugin.Plugin;
-import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.*;
 
 import static org.bukkit.Bukkit.getCommandMap;
 
-public final class EnergeticStorage extends JavaPlugin implements Listener {
-    private static EnergeticStorage plugin;
+public final class EnergeticStorage extends BetterPlugin implements ListenerConglomerate {
+    @Getter @Setter
+    private static EnergeticStorage instance;
+    @Getter @Setter
     private static HopperTask hopperTask;
 
     @Override
     public void onEnable() {
-        plugin = this;
+        instance = this;
 
         registerCommands();
         registerListener();
@@ -111,17 +114,5 @@ public final class EnergeticStorage extends JavaPlugin implements Listener {
         // Plugin shutdown logic
         // Save the player systems on shutdown to prevent item loss
         savePlayerSystems();
-    }
-
-    public static EnergeticStorage getPlugin() {
-        return plugin;
-    }
-
-    public static HopperTask getHopperTask() {
-        return hopperTask;
-    }
-
-    public static void setHopperTask(HopperTask hopperTask) {
-        EnergeticStorage.hopperTask = hopperTask;
     }
 }

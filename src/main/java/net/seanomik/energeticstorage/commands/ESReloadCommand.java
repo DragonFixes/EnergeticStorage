@@ -1,6 +1,5 @@
 package net.seanomik.energeticstorage.commands;
 
-import net.seanomik.energeticstorage.files.ConfigFile;
 import net.seanomik.energeticstorage.files.PlayersFile;
 import net.seanomik.energeticstorage.utils.PermissionChecks;
 import net.seanomik.energeticstorage.utils.Reference;
