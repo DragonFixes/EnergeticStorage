@@ -1,5 +1,5 @@
 name: EnergeticStorage
-version: 0.7.9-SNAPSHOT
+version: 0.8.0-SNAPSHOT
 main: net.seanomik.energeticstorage.EnergeticStorage
 api-version: "1.20"
 authors: [SeanOMik, LiamXSage]
