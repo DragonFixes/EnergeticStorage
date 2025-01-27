@@ -1,51 +1,30 @@
-name: EnergeticStorage
-version: 0.8.0-SNAPSHOT
-main: net.seanomik.energeticstorage.EnergeticStorage
+name: '${name}'
+version: '${version}'
+main: '${main}'
+
 api-version: "1.20"
-authors: [SeanOMik, LiamXSage]
+folia-supported: true
+
+authors:
+  - SeanOMik
+  - LiamXSage
+  - Drak
+
 depend:
   - NBTAPI
   - BukkitOfUtils
 softdepend:
   - Multiverse-Core
   - PlaceholderAPI
+
 commands:
   esgive:
-    aliases: [egive]
+    aliases:
+    - egive
+    permission: energeticstorage.give
     description: Give a Energetic Storage item.
-    usage: /esgive
   esreload:
-    aliases: [ereload]
+    aliases:
+    - ereload
+    permission: energeticstorage.reload
     description: Reload all Energetic Storage configs.
-    usage: /esreload
-permissions:
-  energeticstorage.*:
-    description: All Energetic Storage permissions.
-    default: op
-    children:
-      energeticstorage.reload: true
-      energeticstorage.esgive: true
-      energeticstorage.esgive.others: true
-      energeticstorage.system.open.untrusted: true
-      energeticstorage.system.create: true
-      energeticstorage.system.destroy.untrusted: true
-  energeticstorage.reload:
-    description: Give permission to run `/esreload`.
-    default: op
-  energeticstorage.esgive:
-    description: Give Energetic Storage items.
-    default: op
-    children:
-      energeticstorage.esgive.others: true
-  energeticstorage.esgive.others:
-    description: Give Energetic Storage items to other players.
-    default: op
-  energeticstorage.system.open.untrusted:
-    description: Gives the player permission to open untrusted systems.
-    default: op
-  energeticstorage.system.create:
-    description: Permission for creating new Energetic Storage.
-    default: true
-  energeticstorage.system.destroy.untrusted:
-    description: Permission for destroying an ES System that the player is not trusted in.
-    default: op

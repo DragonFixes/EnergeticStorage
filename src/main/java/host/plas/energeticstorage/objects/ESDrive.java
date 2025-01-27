@@ -1,6 +1,6 @@
 package host.plas.energeticstorage.objects;
 
-import de.tr7zw.changeme.nbtapi.NBTItem;
+import de.tr7zw.nbtapi.NBTItem;
 import lombok.Getter;
 import lombok.Setter;
 import host.plas.energeticstorage.utils.ItemConstructor;

@@ -37,6 +37,11 @@ public final class EnergeticStorage extends BetterPlugin implements ListenerCong
     @Getter @Setter
     private static PlayersFile playersFile;
 
+    @Getter @Setter
+    private static ESGiveCommand esGiveCommand;
+    @Getter @Setter
+    private static ESReloadCommand esReloadCommand;
+
     @Override
     public void onEnable() {
         instance = this;
@@ -57,31 +62,8 @@ public final class EnergeticStorage extends BetterPlugin implements ListenerCong
     }
 
     private void registerCommands() {
-        try {
-            Class<PluginCommand> pluginClass = PluginCommand.class;
-            var constructor = pluginClass.getDeclaredConstructor(String.class, Plugin.class);
-            constructor.setAccessible(true);
-
-            var esGiveCommandClass = new ESGiveCommand();
-            PluginCommand esGiveCommand = constructor.newInstance("esgive", this);
-            esGiveCommand.setAliases(List.of("egive"));
-            esGiveCommand.setExecutor(esGiveCommandClass);
-            esGiveCommand.setTabCompleter(esGiveCommandClass);
-            esGiveCommand.setDescription("Give an Energetic Storage item.");
-            esGiveCommand.setUsage("/esgive");
-            esGiveCommand.setPermission(new Permission("energeticstorage.esgive", PermissionDefault.OP).getName());
-            getCommandMap().register(this.getName().toLowerCase(), esGiveCommand);
-
-            PluginCommand esReloadCommand = constructor.newInstance("esreload", this);
-            esReloadCommand.setAliases(List.of("ereload"));
-            esReloadCommand.setExecutor(new ESReloadCommand());
-            esReloadCommand.setDescription("Reload the Energetic Storage plugin.");
-            esReloadCommand.setUsage("/esreload");
-            esReloadCommand.setPermission(new Permission("energeticstorage.esreload", PermissionDefault.OP).getName());
-            getCommandMap().register(this.getName().toLowerCase(), esReloadCommand);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        setEsGiveCommand(new ESGiveCommand());
+        setEsReloadCommand(new ESReloadCommand());
     }
 
     private void registerListener() {

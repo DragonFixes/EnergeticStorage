@@ -91,6 +91,7 @@ public class HopperTask extends BukkitRunnable {
     public void run() {
         for (Map.Entry<UUID, List<ESSystem>> systemEntry : Reference.ES_SYSTEMS.entrySet()) {
             for (ESSystem system : systemEntry.getValue()) {
+                if (system.getLocation() == null) return;
                 if (system.getLocation().isWorldLoaded()) {
                     Block systemBlock = system.getLocation().getBlock();
 

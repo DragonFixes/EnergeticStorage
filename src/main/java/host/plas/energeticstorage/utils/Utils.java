@@ -5,7 +5,7 @@ import host.plas.energeticstorage.EnergeticStorage;
 import org.bukkit.block.Skull;
 import org.bukkit.inventory.meta.SkullMeta;
 import org.jetbrains.annotations.Nullable;
-import de.tr7zw.changeme.nbtapi.NBTItem;
+import de.tr7zw.nbtapi.NBTItem;
 import host.plas.energeticstorage.Skulls;
 import host.plas.energeticstorage.objects.ESSystem;
 import org.bukkit.Bukkit;

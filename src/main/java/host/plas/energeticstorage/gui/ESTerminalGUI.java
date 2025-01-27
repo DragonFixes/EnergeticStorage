@@ -479,7 +479,8 @@ public class ESTerminalGUI implements InventoryHolder, Listener {
                             }*/
                         }
                         break;
-                    case OUT_HALF, OUT:
+                    case OUT:
+                    case OUT_HALF:
                         if (Utils.isItemValid(clickedItem)) {
                             ItemStack takingItem = clickedItem.clone();
                             takingItem.setAmount((clickType == ClickType.OUT_HALF && clickedItem.getAmount() / 2 > 0) ? clickedItem.getAmount() / 2 : clickedItem.getMaxStackSize());

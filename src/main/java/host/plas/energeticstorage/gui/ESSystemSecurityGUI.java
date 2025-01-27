@@ -291,11 +291,12 @@ public class ESSystemSecurityGUI implements InventoryHolder, Listener {
                                             }
                                         }
                                         return Collections.singletonList(AnvilGUI.ResponseAction.close());
-                                    }).text("Player Name")
-                                      .itemLeft(new ItemStack(Material.PLAYER_HEAD))
-                                      .title("Enter player to trust.")
-                                      .plugin(EnergeticStorage.getInstance())
-                                      .open(player);
+                                    })
+                                    .text("Player Name")
+                                    .itemLeft(new ItemStack(Material.PLAYER_HEAD))
+                                    .title("Enter player to trust.")
+                                    .plugin(EnergeticStorage.getInstance())
+                                    .open(player);
                         } else if (slot == 4) { // Remove player
                             openRemoveInventory(player, openSystem);
                         } else if (slot == 5) { // Set to public/private

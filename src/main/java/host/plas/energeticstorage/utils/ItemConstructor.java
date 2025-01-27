@@ -1,6 +1,6 @@
 package host.plas.energeticstorage.utils;
 
-import de.tr7zw.changeme.nbtapi.NBTItem;
+import de.tr7zw.nbtapi.NBTItem;
 import host.plas.energeticstorage.EnergeticStorage;
 import host.plas.energeticstorage.Skulls;
 import host.plas.energeticstorage.configs.obj.ItemInfo;

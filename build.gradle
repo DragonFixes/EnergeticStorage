@@ -41,8 +41,10 @@ repositories {
         name = "placeholderapi"
         url = "https://repo.extendedclip.com/content/repositories/placeholderapi/"
     }
-    maven { url 'https://repo.papermc.io/repository/maven-snapshots/' }
-    maven { url 'https://repo.papermc.io/repository/maven-public/' }
+    maven { url "https://repo.papermc.io/repository/maven-snapshots/" }
+    maven { url "https://repo.papermc.io/repository/maven-public/" }
+    maven { url "https://repo.codemc.io/repository/maven-public/" }
+    maven { url "https://nexus.flawcra.cc/repository/maven-mirrors/" }
 }
 
 disableAutoTargetJvm()
